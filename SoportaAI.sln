@@ -5,6 +5,14 @@ VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SoportaAI.MauiClient", "src\SoportaAI.MauiClient\SoportaAI.MauiClient.csproj", "{AB0B3FE6-9E76-44C8-8B00-369F40885033}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoportaAI.Infrastructure", "src\SoportaAI.Infrastructure\SoportaAI.Infrastructure.csproj", "{8302E990-815B-4E78-A871-574265B84A61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoportaAI.Utils", "src\SoportaAI.Utils\SoportaAI.Utils.csproj", "{9362FED8-F94A-4420-9B38-6AF6E7F53116}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{7A8D2825-42E6-4240-8B70-76B97254952F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoportaAI.Tests.Infrastructure", "src\Tests\SoportaAI.Tests.Infrastructure\SoportaAI.Tests.Infrastructure.csproj", "{6B1E144F-394D-4FD2-B47C-13C526023995}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,9 +25,24 @@ Global
 		{AB0B3FE6-9E76-44C8-8B00-369F40885033}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB0B3FE6-9E76-44C8-8B00-369F40885033}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB0B3FE6-9E76-44C8-8B00-369F40885033}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{8302E990-815B-4E78-A871-574265B84A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8302E990-815B-4E78-A871-574265B84A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8302E990-815B-4E78-A871-574265B84A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8302E990-815B-4E78-A871-574265B84A61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9362FED8-F94A-4420-9B38-6AF6E7F53116}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9362FED8-F94A-4420-9B38-6AF6E7F53116}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9362FED8-F94A-4420-9B38-6AF6E7F53116}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9362FED8-F94A-4420-9B38-6AF6E7F53116}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B1E144F-394D-4FD2-B47C-13C526023995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B1E144F-394D-4FD2-B47C-13C526023995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B1E144F-394D-4FD2-B47C-13C526023995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B1E144F-394D-4FD2-B47C-13C526023995}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6B1E144F-394D-4FD2-B47C-13C526023995} = {7A8D2825-42E6-4240-8B70-76B97254952F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
