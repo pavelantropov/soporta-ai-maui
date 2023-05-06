@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using SoportaAI.Infrastructure.Services;
+using SoportaAI.Utils.Extensions;
 
 namespace SoportaAI.MauiClient.ViewModels;
 
@@ -23,7 +24,7 @@ public partial class MainViewModel : ObservableObject
 	[RelayCommand]
 	public async Task GenerateResponse()
 	{
-		if (string.IsNullOrWhiteSpace(Input))
+		if (Input.IsNullOrWhiteSpace())
 		{
 			return; // !!!
 		}

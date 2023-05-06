@@ -8,6 +8,10 @@ indent_style = tab
 [*.xml]
 indent_size = 2
 
+# Csproj files
+[*.csproj]
+indent_size = 2
+
 # C# files
 [*.cs]
 csharp_style_namespace_declarations=file_scoped:suggestion

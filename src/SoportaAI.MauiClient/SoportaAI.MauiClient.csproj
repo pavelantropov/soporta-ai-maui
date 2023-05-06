@@ -49,11 +49,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+	  <None Remove="appsettings.json" />
+	  <None Remove="appsettings.Dev.json" />
+	  <None Remove="appsettings.Prod.json" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<EmbeddedResource Include="appsettings.json" />
+		<EmbeddedResource Include="appsettings.Dev.json" />
+		<EmbeddedResource Include="appsettings.Prod.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\SoportaAI.Domain\SoportaAI.Domain.csproj" />
 	  <ProjectReference Include="..\SoportaAI.Utils\SoportaAI.Utils.csproj" />
 	</ItemGroup>
 
