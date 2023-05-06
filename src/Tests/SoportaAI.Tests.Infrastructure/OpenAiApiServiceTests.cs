@@ -1,4 +1,5 @@
 using OpenAI_API;
+using SoportaAI.Domain.Factories;
 using SoportaAI.Infrastructure.Services;
 
 namespace SoportaAI.Tests.Infrastructure;
@@ -10,7 +11,8 @@ public class OpenAiApiServiceTests
 	[SetUp]
 	public void Setup()
 	{
-		_apiService = new OpenAiApiService(new OpenAIAPI());
+		// TODO use moq
+		_apiService = new OpenAiApiService(new OpenAIAPI(), new MessageService(new MessageFactory()));
 	}
 
 	[TestCase("Hello! Are you a chat bot?")]

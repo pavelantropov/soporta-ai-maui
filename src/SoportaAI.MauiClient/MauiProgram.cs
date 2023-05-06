@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using OpenAI_API;
+using SoportaAI.Domain.Factories;
 using SoportaAI.Domain.Options;
+using SoportaAI.Infrastructure.Mappings;
 using SoportaAI.Infrastructure.Services;
 using SoportaAI.MauiClient.ViewModels;
 
@@ -16,7 +18,7 @@ public static class MauiProgram
 				.UseMauiApp<App>()
 				.ConfigureFonts(fonts =>
 				{
-					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+					fonts.AddFont("HammersmithOne-Regular.ttf", "HammersmithOneRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				})
 				;
@@ -33,6 +35,9 @@ public static class MauiProgram
 
 		var config = new ConfigurationBuilder().AddJsonStream(stream).Build();
 		builder.Configuration.AddConfiguration(config);
+
+		//builder.Services.AddDbContext<ChatContext>(options => options.UseInMemoryDatabase("chat"));
+		builder.Services.AddAutoMapper(typeof(MessageMapProfile));
 
 		builder
 			.RegisterAppServices()
@@ -54,6 +59,8 @@ public static class MauiAppBuilderExtensions
 			new OpenAIAPI(new APIAuthentication(openAiOptions.ApiKey, openAiOptions.Organization)));
 		builder.Services.AddSingleton<IApiService, OpenAiApiService>();
 
+		builder.Services.AddSingleton<IMessageFactory, MessageFactory>();
+		builder.Services.AddSingleton<IMessageService, MessageService>();
 
 		return builder;
 	}

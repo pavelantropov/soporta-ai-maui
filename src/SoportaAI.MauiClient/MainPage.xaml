@@ -3,51 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="SoportaAI.MauiClient.MainPage"
              xmlns:viewmodel="clr-namespace:SoportaAI.MauiClient.ViewModels"
+             xmlns:models="clr-namespace:SoportaAI.Model.Models;assembly=SoportaAI.Model"
              x:DataType="viewmodel:MainViewModel">
 
-	<Grid RowDefinitions="100, Auto, *"
-	      ColumnDefinitions=".75*, .25*"
+	<Grid RowDefinitions="66, *, Auto"
 	      Padding="10"
-	      RowSpacing="10"
-	      ColumnSpacing="10">
+	      RowSpacing="10">
 
-		<Image Grid.ColumnSpan="2"
-		       Source="dotnet_bot.png"
-		       BackgroundColor="Transparent" />
+		<Image Grid.Row="0"
+			   Grid.ColumnSpan="2"
+		       Margin="30, 0, 30, 0"
+		       Source="logo_no_background.png"
+		       BackgroundColor="Transparent"/>
 
-		<Entry Placeholder="Enter your input"
-		       Text="{Binding Input}"
-		       Grid.Row="1" />
+		<CollectionView Grid.Row="1"
+			                Grid.ColumnSpan="2"
+			                ItemsSource="{Binding Messages}"
+			                VerticalOptions="End">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="{x:Type models:MessageModel}">
+						<SwipeView>
+							<SwipeView.RightItems>
+								<SwipeItems>
+									<SwipeItem Text="Delete"
+											   BackgroundColor="{StaticResource Tertiary}" />
+								</SwipeItems>
+							</SwipeView.RightItems>
+							<Grid Padding=".5">
+								<Frame BackgroundColor="{StaticResource Primary}">
+									<Label Text="{Binding Text}"
+									       FontSize="24"
+									       TextColor="{StaticResource White}" />
+								</Frame>
+							</Grid>
+						</SwipeView>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
 
-		<Button Text="Add"
-				Command="{Binding GenerateResponseCommand}"
-		        Grid.Row="1"
-		        Grid.Column="1" />
+		<Grid Grid.Row="2"
+		      ColumnDefinitions=".9*, .1*">
 
-		<CollectionView Grid.Row="2"
-		                Grid.ColumnSpan="2"
-		                ItemsSource="{Binding Responses}">
-			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="{x:Type x:String}">
-					<SwipeView>
-						<SwipeView.RightItems>
-							<SwipeItems>
-								<SwipeItem Text="Delete"
-								           BackgroundColor="{StaticResource Secondary}" />
-							</SwipeItems>
-						</SwipeView.RightItems>
-						<Grid Padding=".5">
-							<Frame>
-								<Label Text="{Binding .}"
-								       FontSize="24"
-								       TextColor="{StaticResource Primary}" />
-							</Frame>
-						</Grid>
-					</SwipeView>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
-		</CollectionView>
+			<Entry Placeholder="Enter your message"
+			       Text="{Binding Input}"/>
 
+			<Button Grid.Column="1"
+					BackgroundColor="Transparent"
+					ImageSource="send.png"
+				    Command="{Binding GenerateResponseCommand}"/>
+		</Grid>
 	</Grid>
 
 </ContentPage>
