@@ -15,8 +15,4 @@
 		<ProjectReference Include="..\SoportaAI.Model\SoportaAI.Model.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Mappings\" />
-	</ItemGroup>
-
 </Project>

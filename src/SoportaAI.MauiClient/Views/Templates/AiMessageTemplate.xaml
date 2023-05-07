@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:SoportaAI.Model.Models;assembly=SoportaAI.Model"
+    x:Class="SoportaAI.MauiClient.Views.Templates.AiMessageTemplate">
+    <ContentView.Resources>
+        <ResourceDictionary>
+
+			<Style x:Key="MessageContainerStyle" TargetType="Grid">
+				<Setter Property="Margin" Value="0, 5" />
+			</Style>
+
+			<Style x:Key="MessageShapeStyle" TargetType="Border">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+				<Setter Property="StrokeShape" Value="RoundRectangle 24, 24, 0, 24" />
+                <Setter Property="StrokeThickness" Value="0"/>
+			</Style>
+
+            <Style x:Key="MessageTextStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="TextColor" Value="White" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="Padding" Value="14, 10, 14, 12" />
+            </Style>
+
+            <Style x:Key="TimeTextStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="10" />
+				<Setter Property="TextColor" Value="{StaticResource Gray100}" />
+				<Setter Property="HorizontalOptions" Value="End" />
+				<Setter Property="VerticalOptions" Value="End" />
+				<Setter Property="Padding" Value="0, 0, 18, 4" />
+            </Style>
+
+        </ResourceDictionary>
+    </ContentView.Resources>
+	<ContentView.Content>
+		<Grid ColumnDefinitions=".85*, .15*"
+              Style="{StaticResource MessageContainerStyle}"
+              x:DataType="{x:Type models:MessageModel}">
+			<Border Grid.Column="0"
+                    Style="{StaticResource MessageShapeStyle}">
+	            <Grid>
+		            <Label Text="{Binding Text}"
+		                   Style="{StaticResource MessageTextStyle}"/>
+		            <Label Text="{Binding Time}"
+		                   Style="{StaticResource TimeTextStyle}"/>
+	            </Grid>
+            </Border>
+		</Grid>
+    </ContentView.Content>
+</ContentView>

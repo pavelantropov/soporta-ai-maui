@@ -7,6 +7,7 @@ using SoportaAI.Domain.Options;
 using SoportaAI.Infrastructure.Mappings;
 using SoportaAI.Infrastructure.Services;
 using SoportaAI.MauiClient.ViewModels;
+using SoportaAI.MauiClient.Views;
 
 namespace SoportaAI.MauiClient;
 
@@ -38,6 +39,7 @@ public static class MauiProgram
 
 		//builder.Services.AddDbContext<ChatContext>(options => options.UseInMemoryDatabase("chat"));
 		builder.Services.AddAutoMapper(typeof(MessageMapProfile));
+		builder.Services.AddAutoMapper(typeof(UserMapProfile));
 
 		builder
 			.RegisterAppServices()
@@ -66,13 +68,15 @@ public static class MauiAppBuilderExtensions
 	}
 	public static MauiAppBuilder RegisterViewModels(this MauiAppBuilder builder)
 	{
-		builder.Services.AddSingleton<MainViewModel>();
+		builder.Services.AddSingleton<ChatViewModel>();
+		builder.Services.AddSingleton<HomeViewModel>();
 
 		return builder;
 	}
 	public static MauiAppBuilder RegisterViews(this MauiAppBuilder builder)
 	{
-		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<ChatPage>();
+		builder.Services.AddSingleton<HomePage>();
 
 		return builder;
 	}

@@ -4,16 +4,16 @@ using SoportaAI.Model.Models;
 
 namespace SoportaAI.Infrastructure.Mappings;
 
-public class MessageMapProfile : Profile
+public class UserMapProfile : Profile
 {
-	public MessageMapProfile()
+	public UserMapProfile()
 	{
 		RegisterMappings();
 	}
 
 	private void RegisterMappings()
 	{
-		CreateMap<Message, MessageModel>()
-			.ForMember(dest => dest.Time, opt => opt.MapFrom(src => src.Time.ToShortTimeString()));
+		CreateMap<User, UserModel>();
+		CreateMap<UserModel, User>();
 	}
 }

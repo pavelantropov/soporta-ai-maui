@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SoportaAI.MauiClient.Views.Templates"
+             xmlns:viewmodel="clr-namespace:SoportaAI.MauiClient.ViewModels"
+             xmlns:controls="clr-namespace:SoportaAI.MauiClient.Controls"
+             x:Class="SoportaAI.MauiClient.ChatPage"
+             x:DataType="viewmodel:ChatViewModel">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<DataTemplate x:Key="AiMessageTemplate">
+				<templates:AiMessageTemplate />
+			</DataTemplate>
+
+			<DataTemplate x:Key="UserMessageTemplate">
+				<templates:UserMessageTemplate />
+			</DataTemplate>
+
+			<templates:MessageDataTemplateSelector
+                x:Key="MessageDataTemplateSelector"     
+                AiMessageTemplate="{StaticResource AiMessageTemplate}" 
+                UserMessageTemplate="{StaticResource UserMessageTemplate}"/>
+
+			<Style x:Key="NavigationButtonContainerStyle" TargetType="Grid">
+				<Setter Property="Margin" Value="24, 12" />
+				<Setter Property="VerticalOptions" Value="Start" />
+			</Style>
+
+			<Color x:Key="NavigationButtonColor">#A2A4D6</Color>
+
+			<Style x:Key="NavigationButtonStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="{StaticResource NavigationButtonColor}" />
+				<Setter Property="FontSize" Value="12" />
+				<Setter Property="FontFamily" Value="Metropolis Regular" />
+			</Style>
+
+			<Style x:Key="ButtonsContainerStyle" TargetType="StackLayout">
+				<Setter Property="HeightRequest" Value="120" />
+				<Setter Property="Orientation" Value="Horizontal" />
+				<Setter Property="Margin" Value="24, 12" />
+			</Style>
+
+			<Color x:Key="CircularButtonEllipseColor">#868BCB</Color>
+
+			<Style x:Key="CircularButtonEllipseStyle" TargetType="BoxView">
+				<Setter Property="CornerRadius" Value="40" />
+				<Setter Property="HeightRequest" Value="40" />
+				<Setter Property="WidthRequest" Value="40" />
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="Margin" Value="6, 0, 0, 0" />
+			</Style>
+
+			<Style x:Key="CircularButtonImageStyle" TargetType="Image">
+				<Setter Property="HeightRequest" Value="40" />
+				<Setter Property="Aspect" Value="AspectFit" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="Center" />
+			</Style>
+
+			<Style x:Key="ChatCollectionStyle" TargetType="CollectionView">
+				<Setter Property="Margin" Value="18, 0, 18, 0" />
+				<Setter Property="VerticalOptions" Value="End" />
+			</Style>
+
+			<Color x:Key="ChatEntryBackgroundColor">#F7F7F8</Color>
+
+			<Style x:Key="ChatEntryContainerStyle" TargetType="Frame">
+				<Setter Property="BackgroundColor" Value="{StaticResource ChatEntryBackgroundColor}" />
+				<Setter Property="HeightRequest" Value="72" />
+				<Setter Property="CornerRadius" Value="32" />
+				<Setter Property="HasShadow" Value="False" />
+				<Setter Property="Padding" Value="4" />
+				<Setter Property="Margin" Value="12" />
+			</Style>
+
+			<Style x:Key="ChatEntryStyle" TargetType="Entry">
+				<Setter Property="VerticalOptions" Value="Center" />
+				<Setter Property="Margin" Value="10, 0, 0, 0" />
+			</Style>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+	<ContentPage.Content>
+		<Grid RowDefinitions="Auto, *, Auto"
+		      Padding="10"
+		      RowSpacing="10">
+
+			<Image Grid.Row="0"
+				   Grid.ColumnSpan="2"
+			       Margin="30, 10, 30, 0"
+			       Source="logo_no_background.png"
+			       BackgroundColor="Transparent"/>
+
+			<CollectionView Grid.Row="1"
+			                Grid.ColumnSpan="2"
+			                ItemsSource="{Binding Messages}"
+			                ItemTemplate="{StaticResource MessageDataTemplateSelector}"
+			                Style="{StaticResource ChatCollectionStyle}">
+					
+					<!--<CollectionView.ItemTemplate>
+						<DataTemplate x:DataType="{x:Type models:MessageModel}">
+							<SwipeView>
+								<SwipeView.RightItems>
+									<SwipeItems>
+										<SwipeItem Text="Delete"
+												   BackgroundColor="{StaticResource Tertiary}"
+												   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatViewModel}}}"/>
+									</SwipeItems>
+								</SwipeView.RightItems>
+								<Grid Padding=".5">
+									<Frame BackgroundColor="{StaticResource Primary}">
+										<Label Text="{Binding Text}"
+										       FontSize="24"
+										       TextColor="{StaticResource White}" />
+									</Frame>
+								</Grid>
+							</SwipeView>
+						</DataTemplate>
+					</CollectionView.ItemTemplate>-->
+					
+				</CollectionView>
+
+			<Frame Grid.Row="2"
+				   Style="{StaticResource ChatEntryContainerStyle}">
+				<Grid ColumnDefinitions="*, Auto">
+
+					<Entry Placeholder="Type your message here..."
+					       Style="{StaticResource ChatEntryStyle}"
+					       Text="{Binding Input}"/>
+
+					<Button Grid.Column="1"
+							BackgroundColor="Transparent"
+							ImageSource="send.png"
+						    Command="{Binding SendMessageCommand}"/>
+							<!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatViewModel}}, Path=SendMessageCommand}"/>-->
+				</Grid>
+			</Frame>
+		</Grid>
+	</ContentPage.Content>
+
+</ContentPage>

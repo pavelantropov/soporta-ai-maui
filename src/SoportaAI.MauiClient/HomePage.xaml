@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:SoportaAI.MauiClient.Views.Templates"
+             xmlns:viewModels="clr-namespace:SoportaAI.MauiClient.ViewModels"
+             x:Class="SoportaAI.MauiClient.HomePage"
+             x:DataType="viewModels:HomeViewModel">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+
+			<Style x:Key="OpenChatTextStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="16" />
+				<Setter Property="TextColor" Value="{StaticResource Secondary}" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+			</Style>
+
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentPage.BindingContext>
+		<viewModels:HomeViewModel />
+	</ContentPage.BindingContext>
+	<ContentPage.Content>
+		<Grid RowDefinitions="*, Auto"
+              Padding="10"
+              RowSpacing="10">
+			<Grid Grid.Row="0"
+			      RowDefinitions="Auto, Auto"
+			      RowSpacing="30"
+			      Padding="30"
+			      VerticalOptions="Center">
+				<Image Grid.Row="0"
+					   Margin="50,0"
+				       Source="logo_icon_only.png"/>
+				<Image Grid.Row="1"
+				       Source="logo_text_only.png"/>
+			</Grid>
+			<Grid Grid.Row="1">
+				<Border Padding="14, 10, 14, 12"
+				        BackgroundColor="Transparent"
+				        Stroke="{StaticResource Primary}"
+				        StrokeShape="RoundRectangle 24, 24, 24, 24"
+				        StrokeThickness="3">
+					<Border.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=OpenChatCommand}"/>
+						<TapGestureRecognizer Command="{Binding OpenChatCommand}"/>
+					</Border.GestureRecognizers>
+					<Label Text="OPEN CHAT"
+						   Style="{StaticResource OpenChatTextStyle}"/>
+				</Border>
+			</Grid>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>

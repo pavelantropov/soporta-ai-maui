@@ -8,6 +8,7 @@ public class MessageFactory : IMessageFactory
 	{
 		var message = new Message
 		{
+			Guid = Guid.NewGuid(),
 			Text = text,
 			Time = DateTime.Now,
 			Sender = sender,

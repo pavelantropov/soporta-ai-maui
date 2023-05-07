@@ -2,11 +2,13 @@
 
 namespace SoportaAI.MauiClient;
 
-public partial class MainPage : ContentPage
+public partial class HomePage : ContentPage
 {
-	public MainPage(MainViewModel vm)
+	public HomePage(HomeViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;
+
+		NavigationPage.SetHasNavigationBar(this, false);
 	}
 }

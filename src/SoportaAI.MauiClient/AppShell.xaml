@@ -4,11 +4,16 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:SoportaAI.MauiClient"
-    Shell.FlyoutBehavior="Disabled">
+    FlyoutBehavior="Disabled">
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate local:HomePage}"
+        Route="HomePage" />
+
+    <!--<ShellContent
+        Title="Chat"
+        ContentTemplate="{DataTemplate local:ChatPage}"
+        Route="ChatPage" />-->
 
 </Shell>
