@@ -9,10 +9,21 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 
-			<Style x:Key="OpenChatTextStyle" TargetType="Label">
-				<Setter Property="FontSize" Value="16" />
+			<Style x:Key="ChatButtonContainerStyle" TargetType="Border">
+				<Setter Property="BackgroundColor" Value="Transparent" />
+				<Setter Property="Stroke" Value="{StaticResource Primary}" />
+				<Setter Property="StrokeShape" Value="RoundRectangle 24, 24, 24, 24" />
+				<Setter Property="StrokeThickness" Value="2" />
+				<Setter Property="HeightRequest" Value="72" />
+				<Setter Property="Padding" Value="4" />
+				<Setter Property="Margin" Value="12" />
+			</Style>
+
+			<Style x:Key="ChatButtonTextStyle" TargetType="Label">
+				<Setter Property="FontSize" Value="18" />
 				<Setter Property="TextColor" Value="{StaticResource Secondary}" />
 				<Setter Property="HorizontalOptions" Value="Center" />
+				<Setter Property="VerticalOptions" Value="Center" />
 			</Style>
 
 		</ResourceDictionary>
@@ -28,7 +39,8 @@
 			      RowDefinitions="Auto, Auto"
 			      RowSpacing="30"
 			      Padding="30"
-			      VerticalOptions="Center">
+			      VerticalOptions="Center"
+			      MaximumWidthRequest="400">
 				<Image Grid.Row="0"
 					   Margin="50,0"
 				       Source="logo_icon_only.png"/>
@@ -36,17 +48,13 @@
 				       Source="logo_text_only.png"/>
 			</Grid>
 			<Grid Grid.Row="1">
-				<Border Padding="14, 10, 14, 12"
-				        BackgroundColor="Transparent"
-				        Stroke="{StaticResource Primary}"
-				        StrokeShape="RoundRectangle 24, 24, 24, 24"
-				        StrokeThickness="3">
+				<Border Style="{StaticResource ChatButtonContainerStyle}">
 					<Border.GestureRecognizers>
-						<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=OpenChatCommand}"/>
 						<TapGestureRecognizer Command="{Binding OpenChatCommand}"/>
+						<!--<TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:HomeViewModel}}, Path=OpenChatCommand}"/>-->
 					</Border.GestureRecognizers>
 					<Label Text="OPEN CHAT"
-						   Style="{StaticResource OpenChatTextStyle}"/>
+						   Style="{StaticResource ChatButtonTextStyle}"/>
 				</Border>
 			</Grid>
 		</Grid>

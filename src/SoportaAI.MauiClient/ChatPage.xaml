@@ -64,13 +64,14 @@
 				<Setter Property="VerticalOptions" Value="End" />
 			</Style>
 
-			<Color x:Key="ChatEntryBackgroundColor">#F7F7F8</Color>
+			<Color x:Key="ChatEntryBackgroundColorLight">#F7F7F8</Color>
 
-			<Style x:Key="ChatEntryContainerStyle" TargetType="Frame">
-				<Setter Property="BackgroundColor" Value="{StaticResource ChatEntryBackgroundColor}" />
+			<Style x:Key="ChatEntryContainerStyle" TargetType="Border">
+				<Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource ChatEntryBackgroundColorLight}, 
+																		   Dark={StaticResource Gray900}}" />
+				<Setter Property="StrokeShape" Value="RoundRectangle 24, 24, 24, 24" />
+				<Setter Property="StrokeThickness" Value="0" />
 				<Setter Property="HeightRequest" Value="72" />
-				<Setter Property="CornerRadius" Value="32" />
-				<Setter Property="HasShadow" Value="False" />
 				<Setter Property="Padding" Value="4" />
 				<Setter Property="Margin" Value="12" />
 			</Style>
@@ -86,21 +87,24 @@
 	<ContentPage.Content>
 		<Grid RowDefinitions="Auto, *, Auto"
 		      Padding="10"
-		      RowSpacing="10">
+		      RowSpacing="10"
+		      BackgroundColor="{AppThemeBinding Light={StaticResource White}, 
+												Dark={StaticResource Gray950}}">
 
 			<Image Grid.Row="0"
-				   Grid.ColumnSpan="2"
-			       Margin="30, 10, 30, 0"
-			       Source="logo_no_background.png"
-			       BackgroundColor="Transparent"/>
+                   Grid.ColumnSpan="2"
+                   Margin="30, 10, 30, 0"
+				   MaximumWidthRequest="400"
+                   Source="logo_no_background.png"
+                   BackgroundColor="Transparent"/>
 
 			<CollectionView Grid.Row="1"
 			                Grid.ColumnSpan="2"
 			                ItemsSource="{Binding Messages}"
 			                ItemTemplate="{StaticResource MessageDataTemplateSelector}"
 			                Style="{StaticResource ChatCollectionStyle}">
-					
-					<!--<CollectionView.ItemTemplate>
+
+				<!--<CollectionView.ItemTemplate>
 						<DataTemplate x:DataType="{x:Type models:MessageModel}">
 							<SwipeView>
 								<SwipeView.RightItems>
@@ -120,11 +124,11 @@
 							</SwipeView>
 						</DataTemplate>
 					</CollectionView.ItemTemplate>-->
-					
-				</CollectionView>
 
-			<Frame Grid.Row="2"
-				   Style="{StaticResource ChatEntryContainerStyle}">
+			</CollectionView>
+
+			<Border Grid.Row="2"
+				    Style="{StaticResource ChatEntryContainerStyle}">
 				<Grid ColumnDefinitions="*, Auto">
 
 					<Entry Placeholder="Type your message here..."
@@ -133,11 +137,12 @@
 
 					<Button Grid.Column="1"
 							BackgroundColor="Transparent"
+							HeightRequest="24"
 							ImageSource="send.png"
 						    Command="{Binding SendMessageCommand}"/>
-							<!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatViewModel}}, Path=SendMessageCommand}"/>-->
+					<!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatViewModel}}, Path=SendMessageCommand}"/>-->
 				</Grid>
-			</Frame>
+			</Border>
 		</Grid>
 	</ContentPage.Content>
 

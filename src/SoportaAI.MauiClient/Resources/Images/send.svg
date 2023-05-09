@@ -8,16 +8,16 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    role="img"
-   width="48px"
-   height="48px"
-   viewBox="0 0 24 24"
+   width="44.181171"
+   height="41.553471"
+   viewBox="0 0 22.090586 20.776735"
    aria-labelledby="sendIconTitle sendIconDesc"
-   stroke="#2329D6"
+   stroke="#2329d6"
    stroke-width="1"
    stroke-linecap="square"
    stroke-linejoin="miter"
    fill="none"
-   color="#2329D6"
+   color="#2329d6"
    version="1.1"
    id="svg6"
    sodipodi:docname="send.svg"
@@ -49,8 +49,8 @@
      id="namedview8"
      showgrid="false"
      inkscape:zoom="7.4246212"
-     inkscape:cx="19.936509"
-     inkscape:cy="39.788999"
+     inkscape:cx="17.936509"
+     inkscape:cy="36.562697"
      inkscape:window-x="2391"
      inkscape:window-y="-9"
      inkscape:window-maximized="1"
@@ -61,8 +61,8 @@
   <desc
      id="sendIconDesc">Icon of a paper plane</desc>
   <polygon
-     points="3,14 11,12 3,9.794 3,2.394 21.368,12.001 3,21.609 "
+     points="3,9.794 3,2.394 21.368,12.001 3,21.609 3,14 11,12 "
      id="polygon4"
      style="stroke:#e086cc;stroke-opacity:1"
-     transform="matrix(1.1074759,0,0,0.99569387,-1.7686897,0.05167901)" />
+     transform="matrix(1.1074759,0,0,0.99569387,-2.7686898,-1.561472)" />
 </svg>

@@ -41,7 +41,7 @@
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 		<MauiImage Update="Resources\Images\logo_no_background.svg" BaseSize="400,120" />
-		<MauiImage Update="Resources\Images\send.svg" BaseSize="40,28" />
+		<MauiImage Update="Resources\Images\send.svg" BaseSize="26,24" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
