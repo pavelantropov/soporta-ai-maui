@@ -92,14 +92,12 @@
 												Dark={StaticResource Gray950}}">
 
 			<Image Grid.Row="0"
-                   Grid.ColumnSpan="2"
                    Margin="30, 10, 30, 0"
 				   MaximumWidthRequest="400"
                    Source="logo_no_background.png"
                    BackgroundColor="Transparent"/>
 
 			<CollectionView Grid.Row="1"
-			                Grid.ColumnSpan="2"
 			                ItemsSource="{Binding Messages}"
 			                ItemTemplate="{StaticResource MessageDataTemplateSelector}"
 			                Style="{StaticResource ChatCollectionStyle}">
