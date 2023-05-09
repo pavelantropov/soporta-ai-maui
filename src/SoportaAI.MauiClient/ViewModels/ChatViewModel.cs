@@ -65,4 +65,10 @@ public partial class ChatViewModel : ObservableObject
 	{
 		//NavigationService.Instance.NavigateBackAsync();
 	}
+
+	[RelayCommand]
+	public async Task CopyToClipboardAsync(string text)
+	{
+		await Clipboard.Default.SetTextAsync(text);
+	}
 }

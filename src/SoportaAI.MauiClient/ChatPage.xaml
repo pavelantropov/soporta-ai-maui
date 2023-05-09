@@ -140,7 +140,6 @@
 							HeightRequest="24"
 							ImageSource="send.png"
 						    Command="{Binding SendMessageCommand}"/>
-					<!--Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:ChatViewModel}}, Path=SendMessageCommand}"/>-->
 				</Grid>
 			</Border>
 		</Grid>

@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:models="clr-namespace:SoportaAI.Model.Models;assembly=SoportaAI.Model"
+    xmlns:viewModels="clr-namespace:SoportaAI.MauiClient.ViewModels"
     x:Class="SoportaAI.MauiClient.Views.Templates.UserMessageTemplate">
     <ContentView.Resources>
         <ResourceDictionary>
@@ -11,7 +12,8 @@
 				<Setter Property="Margin" Value="0, 5" />
 			</Style>
 
-			<Style x:Key="MessageShapeStyle" TargetType="Border">
+            <Style x:Key="MessageShapeStyle" TargetType="Border">
+                <Setter Property="MaximumWidthRequest" Value="600" />
                 <Setter Property="BackgroundColor" Value="{StaticResource Secondary}" />
 				<Setter Property="StrokeShape" Value="RoundRectangle 24, 24, 24, 0" />
                 <Setter Property="StrokeThickness" Value="0"/>
@@ -40,6 +42,11 @@
 		      x:DataType="{x:Type models:MessageModel}">
 			<Border Grid.Column="1"
 				    Style="{StaticResource MessageShapeStyle}">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ChatViewModel}}, 
+																				   Path=CopyToClipboardCommand}"
+                                          CommandParameter="{Binding Text}"/>
+                </Border.GestureRecognizers>
 				<Grid>
 					<Label Text="{Binding Text}"
 					       Style="{StaticResource MessageTextStyle}"/>

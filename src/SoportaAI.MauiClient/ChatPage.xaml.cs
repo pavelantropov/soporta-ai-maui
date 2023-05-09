@@ -9,10 +9,4 @@ public partial class ChatPage : ContentPage
 		InitializeComponent();
 		BindingContext = vm;
 	}
-
-	// TODO
-	private async void SetClipboardButton_Clicked(object sender, EventArgs e)
-	{
-		await Clipboard.Default.SetTextAsync("This text was highlighted in the UI.");
-	}
 }

@@ -5,16 +5,14 @@ root = true
 indent_style = tab
 
 # Xml files
-[*.xml]
+[*.xml, *.csproj]
 indent_size = 2
-indent_style = space
+indent_style = tab
 tab_width = 2
 
-# Csproj files
-[*.csproj]
-indent_size = 2
+# Xaml files
+[*.xaml]
 indent_style = space
-tab_width = 2
 
 # C# files
 [*.cs]
